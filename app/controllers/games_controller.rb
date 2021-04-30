@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     url = "https://wagon-dictionary.herokuapp.com/#{try}"
     html_file = open(url).read
     @response = JSON.parse(html_file)
-
+    @response["found"]
     if @response["found"] == true
         if try.chars.all? { |char| try.chars.count(char) <= params["letters"].split(" ").count(char)}
           @answer = "Congratulation #{try} is a valid word"
